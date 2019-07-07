@@ -27,26 +27,26 @@ module.exports = {
     letterSpacing: 0,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: '#000000',  // black
+    cursorColor: 'rgba(248,28,229,0.8)',
 
     // terminal text color under BLOCK cursor
-    cursorAccentColor: '#000000',  //black
+    cursorAccentColor: '#000',
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
-    cursorShape: 'UNDERLINE',
+    cursorShape: 'BLOCK',
 
     // set to `true` (without backticks and without quotes) for blinking cursor
     cursorBlink: true,
 
     // color of the text
-    foregroundColor: '#000000',  // black
+    foregroundColor: '#fff',
 
     // terminal background color
     // opacity is only supported on macOS
-    backgroundColor: '#ffffdd',  // light yellowish
+    backgroundColor: '#000',
 
     // terminal selection color
-    selectionColor: '#000000',  // black
+    selectionColor: 'rgba(248,28,229,0.3)',
 
     // border color (window, tabs)
     borderColor: '#333',
@@ -59,7 +59,7 @@ module.exports = {
 
     // if you're using a Linux setup which show native menus, set to false
     // default: `true` on Linux, `true` on Windows, ignored on macOS
-      showHamburgerMenu: true,
+    showHamburgerMenu: '',
 
     // set to `false` (without backticks and without quotes) if you want to hide the minimize, maximize and close buttons
     // additionally, set to `'left'` if you want them on the left, like in Ubuntu
@@ -138,6 +138,12 @@ module.exports = {
     webGLRenderer: false,
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+
+    // Verminal Plugin (https://github.com/defringe/verminal)
+    // verminal: {
+        // fontFamily: "Consolas",
+    //     fontSize: 11
+    // }
   },
 
   // a list of plugins to fetch and install from npm
@@ -146,7 +152,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [],
+  plugins: ['hyperborder', 'hypercwd', 'hyper-search'],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
