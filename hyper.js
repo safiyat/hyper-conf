@@ -104,7 +104,7 @@ module.exports = {
         //  2. false: turns off the bell
         bell: 'SOUND',
         // An absolute file path to a sound file on the machine.
-        bellSoundURL: '/Users/safiyat/GitHub/hyper-conf/Tink.mp3',
+        bellSoundURL: '/Users/safiyat/GitHub/hyper-conf/sounds/Tink.mp3',
         // The number of rows to be persisted in terminal buffer for scrolling. Default: 1000
         scrollback: 99999,
         // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
@@ -168,7 +168,65 @@ module.exports = {
           focusOnMouseHover: false,
           // Set to 1 to disable inactive panes dimming
           inactivePaneOpacity: 0.5
-        }
+        },
+        hypercwd: {
+          initialWorkingDirectory: '/Users/safiyat/'
+        },
+        hyperSearchUI: {
+          inputBorderRadius: 2,
+          buttonBorderRadius: 2,
+          buttonMargin: 2,
+          prevButton: '←',
+          nextButton: '→'
+        },
+        hyperTabsMove: {
+          moveLeft: 'command+[',
+          moveRight: ['command+]', 'r i g h t']
+        },
+        hyperTouchBar: {
+          activeColor: '#005566',
+          inactiveColor: '#777777',
+          specialButton: {
+            label: 'clear',
+            onClick: () => {
+              window.store.dispatch({
+                type: 'SESSION_CLEAR_ACTIVE'
+              });
+            }
+          }
+        },
+
+        hyperCustomTouchbar: [
+          // if you just need a single button then don't add options array
+          {
+            icon: '/Users/safiyat/GitHub/hyper-conf/icons/folder-icon-macos.png',
+            options: [
+              { command: 'cd /Users/safiyat/Library/CloudStorage/OneDrive-VoerEirAB', icon: '/Users/safiyat/GitHub/hyper-conf/icons/OneDrive.png', backgroundColor: '#000' },
+              { command: 'cd /var/log', icon: '/Users/safiyat/GitHub/hyper-conf/icons/log-file.png', backgroundColor: '#fff' },
+              { command: 'cd /Users/safiyat/GitHub', icon: '/Users/safiyat/GitHub/hyper-conf/icons/github.png', backgroundColor: '#000' },
+              { command: 'cd /Users/safiyat/VoerEirAB/Code', icon: '/Users/safiyat/GitHub/hyper-conf/icons/touchstone.png', backgroundColor: '#000' }
+            ]
+          },
+          { label: 'clear', command: 'clear', backgroundColor: '#d13232' },
+          { label: 'man', command: 'man ', prompt: true },
+          {
+            label: 'git',
+            options: [
+              { label: 'diff', command: 'git diff' },
+              { label: 'status', command: 'git status' },
+              { label: 'log', command: 'git log' },
+              { label: 'add .', command: 'git add .', icon: '/Users/safiyat/Downloads/batux-tux-g2-hd copy.png', iconPosition: 'right' },
+              { label: 'clone', command: 'git clone ', prompt: true },
+            ]
+          },
+          {
+            label: 'vim',
+            options: [
+              { label: 'quit', command: ':q!', esc: true },
+              { label: 'save & quit', command: ':x', esc: true },
+            ]
+          },
+        ]
     },
     // a list of plugins to fetch and install from npm
     // format: [@org/]project[#version]
@@ -176,7 +234,9 @@ module.exports = {
     //   `hyperpower`
     //   `@company/project`
     //   `project#1.0.1`
-    plugins: ['hyperborder', 'hypercwd', 'hyper-search', 'hyper-pane'],
+    plugins: ['hyperborder', 'hypercwd', 'hyper-search', 'hyper-pane', 'hyperterm-tabs', 'hyper-quit', 'hyper-custom-touchbar'],
+    // Disabled plugins: 'hyper-tab-touchbar'
+
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
     // to load it and avoid it being `npm install`ed
